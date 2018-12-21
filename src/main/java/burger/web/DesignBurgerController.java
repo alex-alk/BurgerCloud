@@ -50,7 +50,6 @@ public class DesignBurgerController {
 	
 	@GetMapping
 	public String showDesignForm(Model model) {
-		
 		List<Ingredient> ingredients = new ArrayList<>();
 		ingredientRepo.findAll().forEach(i->ingredients.add(i));
 		Type[] types = Ingredient.Type.values();
@@ -63,7 +62,6 @@ public class DesignBurgerController {
 	@PostMapping
 	public String processDesign(@Valid Burger burger, Errors errors, 
 			@ModelAttribute Order order, Model model) {
-		
 		if(errors.hasErrors()) {
 			List<Ingredient> ingredients = new ArrayList<>();
 			ingredientRepo.findAll().forEach(i->ingredients.add(i));

@@ -13,7 +13,8 @@ import burger.Burger;
 import burger.Ingredient;
 
 @Repository
-public class JdbcBurgerRepository implements BurgerRepository{
+public class JdbcBurgerRepository //implements BurgerRepository
+{
 	
 	private JdbcTemplate jdbc;
 	
@@ -21,7 +22,7 @@ public class JdbcBurgerRepository implements BurgerRepository{
 		this.jdbc = jdbc;
 	}
 	
-	@Override
+	//@Override
 	public Burger save(Burger burger) {
 		long burgerId = saveBurgerInfo(burger);
 		burger.setId(burgerId);
@@ -45,7 +46,7 @@ public class JdbcBurgerRepository implements BurgerRepository{
 	}
 	private void saveIngredientToBurger(Ingredient ingredient, long burgerId) {
 		jdbc.update(
-				"insert into Burger_Ingredients (burger, ingredient) " +
+				"insert into Burger_Ingredient (burger, ingredient) " +
 						"values (?, ?)",burgerId, ingredient.getId());
 	}
 }

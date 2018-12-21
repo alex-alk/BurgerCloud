@@ -9,7 +9,7 @@
 		<h1>Creează-ți burgerul!</h1>
 		<img th:src="@{/images/BurgerCloud.png}"/>
 		
-		<form method="POST" th:object="${burger}">
+		<form method="POST" action="#" th:action="@{/design}" th:object="${burger}">
 		<span class="validationError"
           th:if="${#fields.hasErrors('ingredients')}"
           th:errors="*{ingredients}">Ingredient Error</span>

@@ -16,7 +16,8 @@ import burger.Burger;
 import burger.Order;
 
 @Repository
-public class JdbcOrderRepository implements OrderRepository{
+public class JdbcOrderRepository //implements OrderRepository
+{
 	private SimpleJdbcInsert orderInserter;
 	private SimpleJdbcInsert orderBurgerInserter;
 	private ObjectMapper objectMapper;
@@ -29,7 +30,7 @@ public class JdbcOrderRepository implements OrderRepository{
 		.	withTableName("Burger_Order_Burgers");
 		this.objectMapper = new ObjectMapper();
 	}
-	@Override
+	//@Override
 	public Order save(Order order) {
 	order.setPlacedAt(new Date());
 	long orderId = saveOrderDetails(order);

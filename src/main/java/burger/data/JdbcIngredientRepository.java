@@ -10,7 +10,8 @@ import org.springframework.stereotype.Repository;
 import burger.Ingredient;
 
 @Repository
-public class JdbcIngredientRepository implements IngredientRepository{
+public class JdbcIngredientRepository //implements IngredientRepository
+{
 	
 	private JdbcTemplate jdbc;
 	
@@ -19,19 +20,19 @@ public class JdbcIngredientRepository implements IngredientRepository{
 		this.jdbc = jdbc;
 	}
 	
-	@Override
+	//@Override
 	public Iterable<Ingredient> findAll() {
 		return jdbc.query("select id, name, type from Ingredient",
 				this::mapRowToIngredient);
 	}
 
-	@Override
+	//@Override
 	public Ingredient findById(String id) {
 		return jdbc.queryForObject("select id, name, type from Ingredient where id=?", 
 				this::mapRowToIngredient, id);
 	}
 
-	@Override
+	//@Override
 	public Ingredient save(Ingredient ingredient) {
 		jdbc.update(
 				"insert into Ingredient(id, name, type) values (?,?,?)",
